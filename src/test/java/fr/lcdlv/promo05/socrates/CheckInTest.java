@@ -11,7 +11,7 @@ public class CheckInTest {
   @Test
   public void before9PMIsNotTooLate() {
     Assertions.assertThat(
-        new CheckIn(LocalTime.of (20,59)).isTooLate()
+        new CheckIn(20,59).isTooLate()
     ).isEqualTo(
         false
     );
@@ -20,7 +20,7 @@ public class CheckInTest {
   @Test
   public void at9PMIsTooLate() {
     Assertions.assertThat(
-        new CheckIn(LocalTime.of (21,00)).isTooLate()
+        new CheckIn(21,00).isTooLate()
     ).isEqualTo(
         true
     );
@@ -29,7 +29,7 @@ public class CheckInTest {
   @Test
   public void after9PMIsTooLate() {
     Assertions.assertThat(
-            new CheckIn(LocalTime.of (23,30)).isTooLate()
+            new CheckIn(23,30).isTooLate()
     ).isEqualTo(
             true
     );

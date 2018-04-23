@@ -8,8 +8,8 @@ public class CheckIn {
     private final LocalTime time;
     private static final LocalTime NINE_PM = LocalTime.of(21, 00);
 
-    public CheckIn(LocalTime time) {
-        this.time = time;
+    public CheckIn(int hours,int minutes) {
+        this.time = LocalTime.of (hours,minutes);
     }
 
     public boolean isTooLate() {
