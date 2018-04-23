@@ -18,4 +18,13 @@ public class CheckinDateTest {
         false
     );
   }
+
+  @Test
+  public void returnsTrueIfTimeIs9PM() {
+    Assertions.assertThat(
+        new CheckinDate(LocalTime.of (21,00)).isAfter9PM()
+    ).isEqualTo (
+        true
+    );
+  }
 }
