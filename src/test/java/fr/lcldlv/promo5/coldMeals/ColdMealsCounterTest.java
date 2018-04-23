@@ -54,4 +54,15 @@ public class ColdMealsCounterTest {
                 .isEqualTo(2);
     }
 
+    @Test
+    public void should_return_0_when_there_is_two_before_limit_check_in_dates() {
+        List<CheckInDate> checkInDates = Lists.newArrayList(
+                new CheckInDate(10, 00),
+                new CheckInDate(20, 59)
+        );
+        Assertions.assertThat(
+                new ColdMealsCounter().count(checkInDates))
+                .isEqualTo(0);
+    }
+
 }
