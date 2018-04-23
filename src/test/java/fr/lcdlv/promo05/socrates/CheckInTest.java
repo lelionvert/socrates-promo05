@@ -10,7 +10,7 @@ public class CheckInTest {
   @Test
   public void returnsFalseIfTimeIsBefore9PM() {
     Assertions.assertThat(
-        new CheckIn(LocalTime.of (20,59)).isAfter9PM()
+        new CheckIn(LocalTime.of (20,59)).isEqualsOrAfter9PM ()
     ).isEqualTo (
         false
     );
@@ -19,7 +19,7 @@ public class CheckInTest {
   @Test
   public void returnsTrueIfTimeIs9PM() {
     Assertions.assertThat(
-        new CheckIn(LocalTime.of (21,00)).isAfter9PM()
+        new CheckIn(LocalTime.of (21,00)).isEqualsOrAfter9PM ()
     ).isEqualTo (
         true
     );
@@ -28,7 +28,7 @@ public class CheckInTest {
   @Test
   public void returnsTrueIfTimeIsAfter9PM() {
     Assertions.assertThat(
-            new CheckIn(LocalTime.of (23,30)).isAfter9PM()
+            new CheckIn(LocalTime.of (23,30)).isEqualsOrAfter9PM ()
     ).isEqualTo (
             true
     );
