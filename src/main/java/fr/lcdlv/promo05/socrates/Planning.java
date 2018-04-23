@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Planning {
 
-  public static int countColdMeals(final List<CheckIn> participants) {
+  public static int countColdMeals(final List<CheckIn> checkIns) {
 
-    return participants != null && participants.size () > 0 ? participants.size () : 0;
+    return checkIns != null && checkIns.size () > 0 ? checkIns.size () : 0;
   }
 }
