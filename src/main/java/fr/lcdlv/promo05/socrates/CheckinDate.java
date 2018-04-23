@@ -8,7 +8,6 @@ public class CheckinDate {
     }
 
     public boolean isAfter9PM() {
-
-        return true;
+        return false;
     }
 }

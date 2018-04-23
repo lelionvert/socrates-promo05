@@ -15,7 +15,7 @@ public class CheckinDateTest {
     Assertions.assertThat(
         new CheckinDate(LocalTime.of (20,59)).isAfter9PM()
     ).isEqualTo (
-        true
+        false
     );
   }
 }
