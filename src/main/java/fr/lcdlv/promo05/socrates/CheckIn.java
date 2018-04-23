@@ -12,6 +12,7 @@ public class CheckIn {
     }
 
     public boolean isEqualsOrAfter9PM() {
-        return time.equals(LocalTime.of(21, 00)) || time.isAfter(LocalTime.of(21, 00));
+        final LocalTime ninePM = LocalTime.of (21, 00);
+        return time.equals(ninePM) || time.isAfter(ninePM);
     }
 }
