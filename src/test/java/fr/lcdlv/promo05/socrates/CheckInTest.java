@@ -7,29 +7,30 @@ import org.junit.Test;
 import java.time.LocalTime;
 
 public class CheckInTest {
+
   @Test
-  public void returnsFalseIfTimeIsBefore9PM() {
+  public void before9PMIsNotTooLate() {
     Assertions.assertThat(
-        new CheckIn(LocalTime.of (20,59)).isEqualsOrAfter9PM ()
-    ).isEqualTo (
+        new CheckIn(LocalTime.of (20,59)).isTooLate()
+    ).isEqualTo(
         false
     );
   }
 
   @Test
-  public void returnsTrueIfTimeIs9PM() {
+  public void at9PMIsTooLate() {
     Assertions.assertThat(
-        new CheckIn(LocalTime.of (21,00)).isEqualsOrAfter9PM ()
-    ).isEqualTo (
+        new CheckIn(LocalTime.of (21,00)).isTooLate()
+    ).isEqualTo(
         true
     );
   }
 
   @Test
-  public void returnsTrueIfTimeIsAfter9PM() {
+  public void after9PMIsTooLate() {
     Assertions.assertThat(
-            new CheckIn(LocalTime.of (23,30)).isEqualsOrAfter9PM ()
-    ).isEqualTo (
+            new CheckIn(LocalTime.of (23,30)).isTooLate()
+    ).isEqualTo(
             true
     );
   }
