@@ -9,12 +9,16 @@ public class ColdMeals {
     }
 
     public ColdMeals(CheckInDate checkInDate) {
-        if(checkInDate.getHour()>= 21){
+        if(isCheckInAfterLimitTime(checkInDate)){
             checkInParticipantDates=1;
         }
         else{
             checkInParticipantDates=0;
         }
+    }
+
+    private boolean isCheckInAfterLimitTime(CheckInDate checkInDate) {
+        return checkInDate.getHour()>= 21;
     }
 
     int count() {
