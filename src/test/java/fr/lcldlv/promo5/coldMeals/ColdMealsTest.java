@@ -13,4 +13,12 @@ public class ColdMealsTest {
                 .isEqualTo(0);
 
     }
+
+    @Test
+    public void should_return_0_when_the_checking_date_is_a_thursday_noon() throws Exception {
+
+        Assertions.assertThat(
+                new ColdMeals(new CheckInDate(12, 00)).count())
+                .isEqualTo(0);
+    }
 }

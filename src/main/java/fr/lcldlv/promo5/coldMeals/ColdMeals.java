@@ -8,6 +8,10 @@ public class ColdMeals {
         checkInParticipantDates=0;
     }
 
+    public ColdMeals(CheckInDate checkInDate) {
+        checkInParticipantDates=0;
+    }
+
     int count() {
         return checkInParticipantDates;
     }
