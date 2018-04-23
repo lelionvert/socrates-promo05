@@ -10,4 +10,8 @@ public class CheckInDate {
         this.hour = hour;
         this.minutes = minutes;
     }
+
+    public int getHour() {
+        return hour;
+    }
 }

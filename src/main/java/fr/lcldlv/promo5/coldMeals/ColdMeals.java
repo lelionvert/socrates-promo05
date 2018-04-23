@@ -9,7 +9,12 @@ public class ColdMeals {
     }
 
     public ColdMeals(CheckInDate checkInDate) {
-        checkInParticipantDates=0;
+        if(checkInDate.getHour()>= 21){
+            checkInParticipantDates=1;
+        }
+        else{
+            checkInParticipantDates=0;
+        }
     }
 
     int count() {

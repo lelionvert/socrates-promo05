@@ -19,4 +19,11 @@ public class ColdMealsTest {
                 new ColdMeals(new CheckInDate(12, 00)).count())
                 .isEqualTo(0);
     }
+
+    @Test
+    public void should_return_1_when_the_checking_date_is_thursday_21h00_PM() {
+        Assertions.assertThat(
+                new ColdMeals(new CheckInDate(21, 00)).count())
+                .isEqualTo(1);
+    }
 }
