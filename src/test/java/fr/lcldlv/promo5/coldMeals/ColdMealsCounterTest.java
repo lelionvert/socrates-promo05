@@ -4,14 +4,15 @@ import org.assertj.core.api.Assertions;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class ColdMealsTest {
+public class ColdMealsCounterTest {
 
     @Test
     public void should_return_0_when_there_is_no_persons_check_in_on_thursday_after_21PM() {
 
-        Assertions.assertThat(new ColdMeals().count())
+        Assertions.assertThat(new ColdMealsCounter().count())
                 .isEqualTo(0);
     }
 
@@ -19,14 +20,16 @@ public class ColdMealsTest {
     public void should_return_0_when_the_check_in_date_is_before_thursday_21h00PM() {
 
         Assertions.assertThat(
-                new ColdMeals(new CheckInDate(12, 00)).count())
+                new ColdMealsCounter()
+                        .count(Arrays.asList(new CheckInDate(12, 00))))
                 .isEqualTo(0);
     }
 
     @Test
     public void should_return_1_when_the_check_in_date_is_thursday_21h00PM() {
         Assertions.assertThat(
-                new ColdMeals(new CheckInDate(21, 00)).count())
+                new ColdMealsCounter()
+                        .count(Arrays.asList(new CheckInDate(21, 00))))
                 .isEqualTo(1);
     }
 
@@ -37,7 +40,7 @@ public class ColdMealsTest {
                 new CheckInDate(20, 00)
         );
         Assertions.assertThat(
-                new ColdMeals(checkInDates).count())
+                new ColdMealsCounter().count(checkInDates))
                 .isEqualTo(1);
     }
 }
