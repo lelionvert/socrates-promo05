@@ -12,6 +12,6 @@ public class CheckIn {
     }
 
     public boolean isAfter9PM() {
-        return time.equals(LocalTime.of(21, 00));
+        return time.equals(LocalTime.of(21, 00)) || time.isAfter(LocalTime.of(21, 00));
     }
 }

@@ -24,4 +24,13 @@ public class CheckInTest {
         true
     );
   }
+
+  @Test
+  public void returnsTrueIfTimeIsAfter9PM() {
+    Assertions.assertThat(
+            new CheckIn(LocalTime.of (23,30)).isAfter9PM()
+    ).isEqualTo (
+            true
+    );
+  }
 }
