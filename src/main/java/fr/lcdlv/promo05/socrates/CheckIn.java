@@ -3,11 +3,11 @@ package fr.lcdlv.promo05.socrates;
 
 import java.time.LocalTime;
 
-public class CheckinDate {
+public class CheckIn {
 
     private final LocalTime time;
 
-    public CheckinDate(LocalTime time) {
+    public CheckIn(LocalTime time) {
         this.time = time;
     }
 
