@@ -29,9 +29,9 @@ public class CheckInTest {
   @Test
   public void after9PMIsTooLate() {
     Assertions.assertThat(
-            new CheckIn(23,30).isTooLate()
+        new CheckIn(23,30).isTooLate()
     ).isEqualTo(
-            true
+        true
     );
   }
 }

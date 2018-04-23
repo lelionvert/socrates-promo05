@@ -22,18 +22,22 @@ public class CountColdMealsTest {
 
   @Test
   public void oneLateParticipant() {
-    List<CheckIn> participants =Arrays.asList (new CheckIn ( 10,30));
+    List<CheckIn> participants = Arrays.asList(new CheckIn( 10,30));
 
     Assertions.assertThat(
-            Planning.countColdMeals(participants)
+        Planning.countColdMeals(participants)
     ).isEqualTo(1);
   }
   @Test
   public void allParticipantsAreLate() {
-    List<CheckIn> participants =Arrays.asList (new CheckIn ( 22,30),new CheckIn ( 23,30),new CheckIn ( 22,33));
+    List<CheckIn> participants =Arrays.asList (
+        new CheckIn(22,30),
+        new CheckIn(23,30),
+        new CheckIn(22,33)
+    );
 
     Assertions.assertThat(
-            Planning.countColdMeals(participants)
+        Planning.countColdMeals(participants)
     ).isEqualTo(3);
   }
 }
