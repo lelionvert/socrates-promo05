@@ -39,34 +39,34 @@ public class ColdMealsCounterTest {
 
     @Test
     public void should_return_1_if_one_before_and_one_after_cold_meal_time_limit() {
-        List<CheckIn> checkInDates = Lists.newArrayList(
+        List<CheckIn> checkIns = Lists.newArrayList(
                 checkInTimeBeforeColdMealsLimit,
                 checkInAfterColdMealsLimit
         );
         Assertions.assertThat(
-                coldMealsCounter.countColdMeals(new CheckIns(checkInDates)))
+                coldMealsCounter.countColdMeals(new CheckIns(checkIns)))
                 .isEqualTo(1);
     }
 
     @Test
     public void should_return_2_if_two_checkIns_after_cold_meal_time_limit() {
-        List<CheckIn> checkInDates = Lists.newArrayList(
+        List<CheckIn> checkIns = Lists.newArrayList(
                 checkInAfterColdMealsLimit,
                 checkInAfterColdMealsLimit
         );
         Assertions.assertThat(
-                coldMealsCounter.countColdMeals(new CheckIns(checkInDates)))
+                coldMealsCounter.countColdMeals(new CheckIns(checkIns)))
                 .isEqualTo(2);
     }
 
     @Test
     public void should_return_0_if_two_checkIns_before_cold_meal_time_limit() {
-        List<CheckIn> checkInDates = Lists.newArrayList(
+        List<CheckIn> checkIns = Lists.newArrayList(
                 checkInTimeBeforeColdMealsLimit,
                 checkInTimeBeforeColdMealsLimit
         );
         Assertions.assertThat(
-                coldMealsCounter.countColdMeals(new CheckIns(checkInDates)))
+                coldMealsCounter.countColdMeals(new CheckIns(checkIns)))
                 .isEqualTo(0);
     }
 
