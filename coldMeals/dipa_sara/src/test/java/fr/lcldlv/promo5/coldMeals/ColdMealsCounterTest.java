@@ -16,7 +16,7 @@ public class ColdMealsCounterTest {
     @Test
     public void should_return_0_if_no_checkIn_after_cold_meal_time_limit() {
 
-        Assertions.assertThat(coldMealsCounter.countColdMeals(Arrays.asList()))
+        Assertions.assertThat(coldMealsCounter.countColdMeals(new CheckIns(Arrays.asList())))
                 .isEqualTo(0);
     }
 
@@ -25,7 +25,7 @@ public class ColdMealsCounterTest {
 
         Assertions.assertThat(
                 coldMealsCounter
-                        .countColdMeals(Arrays.asList(checkInTimeBeforeColdMealsLimit)))
+                        .countColdMeals(new CheckIns(Arrays.asList(checkInTimeBeforeColdMealsLimit))))
                 .isEqualTo(0);
     }
 
@@ -33,7 +33,7 @@ public class ColdMealsCounterTest {
     public void should_return_1_if_the_checkIn_is_after_cold_meal_time_limit() {
         Assertions.assertThat(
                 coldMealsCounter
-                        .countColdMeals(Arrays.asList(checkInAfterColdMealsLimit)))
+                        .countColdMeals(new CheckIns(Arrays.asList(checkInAfterColdMealsLimit))))
                 .isEqualTo(1);
     }
 
@@ -44,7 +44,7 @@ public class ColdMealsCounterTest {
                 checkInAfterColdMealsLimit
         );
         Assertions.assertThat(
-                coldMealsCounter.countColdMeals(checkInDates))
+                coldMealsCounter.countColdMeals(new CheckIns(checkInDates)))
                 .isEqualTo(1);
     }
 
@@ -55,7 +55,7 @@ public class ColdMealsCounterTest {
                 checkInAfterColdMealsLimit
         );
         Assertions.assertThat(
-                coldMealsCounter.countColdMeals(checkInDates))
+                coldMealsCounter.countColdMeals(new CheckIns(checkInDates)))
                 .isEqualTo(2);
     }
 
@@ -66,7 +66,7 @@ public class ColdMealsCounterTest {
                 checkInTimeBeforeColdMealsLimit
         );
         Assertions.assertThat(
-                coldMealsCounter.countColdMeals(checkInDates))
+                coldMealsCounter.countColdMeals(new CheckIns(checkInDates)))
                 .isEqualTo(0);
     }
 
