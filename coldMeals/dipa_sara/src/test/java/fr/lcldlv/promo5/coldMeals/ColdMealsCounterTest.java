@@ -10,14 +10,14 @@ import java.util.List;
 public class ColdMealsCounterTest {
 
     @Test
-    public void should_return_0_if_no_persons_check_in_after_limit_check_in() {
+    public void should_return_0_if_no_checkIn_after_cold_meal_time_limit() {
 
         Assertions.assertThat(new ColdMealsCounter().countColdMeals(Arrays.asList()))
                 .isEqualTo(0);
     }
 
     @Test
-    public void should_return_0_if_the_check_in_is_before_cold_meal_time() {
+    public void should_return_0_if_a_checkIn_before_cold_meal_time_limit() {
 
         Assertions.assertThat(
                 new ColdMealsCounter()
@@ -26,7 +26,7 @@ public class ColdMealsCounterTest {
     }
 
     @Test
-    public void should_return_1_if_the_check_in_date_is_after_limit_check_in() {
+    public void should_return_1_if_the_checkIn_is_after_cold_meal_time_limit() {
         Assertions.assertThat(
                 new ColdMealsCounter()
                         .countColdMeals(Arrays.asList(new CheckInTime(21))))
@@ -34,7 +34,7 @@ public class ColdMealsCounterTest {
     }
 
     @Test
-    public void should_return_1_if_one_before_limit_check_in_date_and_one_after_limit_check_in_date() {
+    public void should_return_1_if_one_before_and_one_after_cold_meal_time_limit() {
         List<CheckInTime> checkInDates = Lists.newArrayList(
                 new CheckInTime(22),
                 new CheckInTime(20)
@@ -45,7 +45,7 @@ public class ColdMealsCounterTest {
     }
 
     @Test
-    public void should_return_2_if_two_after_limit_check_in_dates() {
+    public void should_return_2_if_two_checkIns_after_cold_meal_time_limit() {
         List<CheckInTime> checkInDates = Lists.newArrayList(
                 new CheckInTime(22),
                 new CheckInTime(21)
@@ -56,7 +56,7 @@ public class ColdMealsCounterTest {
     }
 
     @Test
-    public void should_return_0_if_two_before_limit_check_in_dates() {
+    public void should_return_0_if_two_checkIns_before_cold_meal_time_limit() {
         List<CheckInTime> checkInDates = Lists.newArrayList(
                 new CheckInTime(10),
                 new CheckInTime(20)
