@@ -3,9 +3,9 @@ package fr.lcldlv.promo5.coldMeals;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ColdMealsCounter {
+class ColdMealsCounter {
 
-    public static final int COLD_MEALS_TIME_LIMIT = 21;
+    private static final int COLD_MEALS_TIME_LIMIT = 21;
 
     int countColdMeals(List<CheckInTime> checkInDates) {
         return checkInDates.stream()
