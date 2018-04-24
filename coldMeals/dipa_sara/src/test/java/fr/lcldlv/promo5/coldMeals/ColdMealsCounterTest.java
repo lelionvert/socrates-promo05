@@ -10,8 +10,8 @@ import java.util.List;
 public class ColdMealsCounterTest {
 
     private final ColdMealsCounter coldMealsCounter = new ColdMealsCounter();
-    private final CheckInTime checkInTimeBeforeColdMealsLimitTime = new CheckInTime(12);
-    private final CheckInTime checkInTimeAfterColdMealsLimit = new CheckInTime(21);
+    private final CheckIn checkInTimeBeforeColdMealsLimit = new CheckIn(12);
+    private final CheckIn checkInAfterColdMealsLimit = new CheckIn(21);
 
     @Test
     public void should_return_0_if_no_checkIn_after_cold_meal_time_limit() {
@@ -25,7 +25,7 @@ public class ColdMealsCounterTest {
 
         Assertions.assertThat(
                 coldMealsCounter
-                        .countColdMeals(Arrays.asList(checkInTimeBeforeColdMealsLimitTime)))
+                        .countColdMeals(Arrays.asList(checkInTimeBeforeColdMealsLimit)))
                 .isEqualTo(0);
     }
 
@@ -33,15 +33,15 @@ public class ColdMealsCounterTest {
     public void should_return_1_if_the_checkIn_is_after_cold_meal_time_limit() {
         Assertions.assertThat(
                 coldMealsCounter
-                        .countColdMeals(Arrays.asList(checkInTimeAfterColdMealsLimit)))
+                        .countColdMeals(Arrays.asList(checkInAfterColdMealsLimit)))
                 .isEqualTo(1);
     }
 
     @Test
     public void should_return_1_if_one_before_and_one_after_cold_meal_time_limit() {
-        List<CheckInTime> checkInDates = Lists.newArrayList(
-                checkInTimeBeforeColdMealsLimitTime,
-                checkInTimeAfterColdMealsLimit
+        List<CheckIn> checkInDates = Lists.newArrayList(
+                checkInTimeBeforeColdMealsLimit,
+                checkInAfterColdMealsLimit
         );
         Assertions.assertThat(
                 coldMealsCounter.countColdMeals(checkInDates))
@@ -50,9 +50,9 @@ public class ColdMealsCounterTest {
 
     @Test
     public void should_return_2_if_two_checkIns_after_cold_meal_time_limit() {
-        List<CheckInTime> checkInDates = Lists.newArrayList(
-                checkInTimeAfterColdMealsLimit,
-                checkInTimeAfterColdMealsLimit
+        List<CheckIn> checkInDates = Lists.newArrayList(
+                checkInAfterColdMealsLimit,
+                checkInAfterColdMealsLimit
         );
         Assertions.assertThat(
                 coldMealsCounter.countColdMeals(checkInDates))
@@ -61,9 +61,9 @@ public class ColdMealsCounterTest {
 
     @Test
     public void should_return_0_if_two_checkIns_before_cold_meal_time_limit() {
-        List<CheckInTime> checkInDates = Lists.newArrayList(
-                checkInTimeBeforeColdMealsLimitTime,
-                checkInTimeBeforeColdMealsLimitTime
+        List<CheckIn> checkInDates = Lists.newArrayList(
+                checkInTimeBeforeColdMealsLimit,
+                checkInTimeBeforeColdMealsLimit
         );
         Assertions.assertThat(
                 coldMealsCounter.countColdMeals(checkInDates))

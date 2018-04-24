@@ -1,10 +1,10 @@
 package fr.lcldlv.promo5.coldMeals;
 
-class CheckInTime {
+class CheckIn {
 
     private final int hour;
 
-    CheckInTime(int hour) {
+    CheckIn(int hour) {
         this.hour = hour;
     }
 
