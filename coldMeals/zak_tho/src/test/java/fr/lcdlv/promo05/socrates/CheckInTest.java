@@ -11,7 +11,7 @@ public class CheckInTest {
   public static final LocalTime TIME_TO_COMPARE = LocalTime.of (21, 00);
 
   @Test
-  public void before9PMIsNotTooLate() {
+  public void returns_false_if_check_in_is_before_time() {
     assertThat(
         new CheckIn(20,59).isEqualsOrAfter (TIME_TO_COMPARE)
     ).isEqualTo(
@@ -20,7 +20,7 @@ public class CheckInTest {
   }
 
   @Test
-  public void at9PMIsTooLate() {
+  public void returns_true_if_check_in_is_the_same_as_time() {
     assertThat(
         new CheckIn(21,00).isEqualsOrAfter (TIME_TO_COMPARE)
     ).isEqualTo(
@@ -29,7 +29,7 @@ public class CheckInTest {
   }
 
   @Test
-  public void after9PMIsTooLate() {
+  public void returns_true_if_check_in_is_after_time() {
     assertThat(
         new CheckIn(23,30).isEqualsOrAfter (TIME_TO_COMPARE)
     ).isEqualTo(

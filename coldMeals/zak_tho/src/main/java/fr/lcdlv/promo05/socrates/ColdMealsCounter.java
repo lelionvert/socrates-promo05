@@ -5,9 +5,9 @@ import java.util.List;
 
 class ColdMealsCounter {
 
-  public static final LocalTime COLD_MEALS_TIME = LocalTime.of(21, 00);
+  private static final LocalTime COLD_MEALS_TIME = LocalTime.of(21, 00);
 
-  public static int countColdMeals(final List<CheckIn> checkIns) {
+  static int countColdMeals(final List<CheckIn> checkIns) {
       return Math.toIntExact(
         checkIns
             .stream()
