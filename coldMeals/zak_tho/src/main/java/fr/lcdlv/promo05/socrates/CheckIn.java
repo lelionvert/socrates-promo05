@@ -6,7 +6,6 @@ import java.time.LocalTime;
 class CheckIn {
 
     private final LocalTime time;
-    public static final LocalTime COLD_MEALS_TIME = LocalTime.of(21, 00);
 
     public CheckIn(int hours, int minutes) {
         this.time = LocalTime.of(hours, minutes);
