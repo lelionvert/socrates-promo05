@@ -9,7 +9,7 @@ public class CheckInTime {
         this.hour = hour;
     }
 
-    public int getHour() {
-        return hour;
+    public boolean isAfter(int time) {
+        return this.hour >= time;
     }
 }
