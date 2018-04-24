@@ -15,7 +15,7 @@ public class CountColdMealsTest {
     List<CheckIn> checkIns = new ArrayList<>();
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
+        ColdMealsCounter.countColdMeals(checkIns)
     ).isEqualTo(0);
   }
 
@@ -26,7 +26,7 @@ public class CountColdMealsTest {
     );
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
+        ColdMealsCounter.countColdMeals(checkIns)
     ).isEqualTo(1);
   }
 
@@ -39,7 +39,7 @@ public class CountColdMealsTest {
     );
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
+        ColdMealsCounter.countColdMeals(checkIns)
     ).isEqualTo(3);
   }
 
@@ -52,7 +52,7 @@ public class CountColdMealsTest {
     );
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
+        ColdMealsCounter.countColdMeals(checkIns)
     ).isEqualTo(
         0
     );
@@ -68,7 +68,7 @@ public class CountColdMealsTest {
     );
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
+        ColdMealsCounter.countColdMeals(checkIns)
     ).isEqualTo(
         1
     );
