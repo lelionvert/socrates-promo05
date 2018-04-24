@@ -1,14 +1,12 @@
 package fr.lcldlv.promo5.coldMeals;
 
-public class CheckInDate {
+public class CheckInTime {
 
     private final int hour;
-    private final int minutes;
 
-    public CheckInDate(int hour, int minutes) {
+    public CheckInTime(int hour) {
 
         this.hour = hour;
-        this.minutes = minutes;
     }
 
     public int getHour() {

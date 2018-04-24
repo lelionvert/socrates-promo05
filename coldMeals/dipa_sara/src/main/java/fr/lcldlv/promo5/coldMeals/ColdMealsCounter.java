@@ -5,14 +5,11 @@ import java.util.stream.Collectors;
 
 public class ColdMealsCounter {
 
-    private boolean isCheckInAfterLimitTime(CheckInDate checkInDate) {
+    private boolean isCheckInAfterLimitTime(CheckInTime checkInDate) {
         return checkInDate.getHour() >= 21;
     }
 
-    int count() {
-        return 0;
-    }
-    int count(List<CheckInDate> checkInDates) {
+    int countColdMeals(List<CheckInTime> checkInDates) {
         return checkInDates.stream()
                 .filter(this::isCheckInAfterLimitTime)
                 .collect(Collectors.toList()).size();
