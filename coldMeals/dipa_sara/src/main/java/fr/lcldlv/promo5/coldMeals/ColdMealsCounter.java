@@ -7,13 +7,9 @@ public class ColdMealsCounter {
 
     public static final int COLD_MEALS_TIME_LIMIT = 21;
 
-    private boolean isCheckInAfterLimitTime(CheckInTime checkInDate) {
-        return checkInDate.isAfter(COLD_MEALS_TIME_LIMIT);
-    }
-
     int countColdMeals(List<CheckInTime> checkInDates) {
         return checkInDates.stream()
-                .filter(this::isCheckInAfterLimitTime)
+                .filter((checkInDate) -> checkInDate.isAfter(COLD_MEALS_TIME_LIMIT))
                 .collect(Collectors.toList()).size();
     }
 }
