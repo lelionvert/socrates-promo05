@@ -1,6 +1,5 @@
 package fr.lcdlv.promo05.socrates;
 
-import org.assertj.core.api.Assertions.*;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,7 +9,7 @@ public class CheckInTest {
   @Test
   public void before9PMIsNotTooLate() {
     assertThat(
-        new CheckIn(20,59).isTooLate()
+        new CheckIn(20,59).isEqualsOrAfter (CheckIn.COLD_MEALS_TIME)
     ).isEqualTo(
         false
     );
@@ -19,7 +18,7 @@ public class CheckInTest {
   @Test
   public void at9PMIsTooLate() {
     assertThat(
-        new CheckIn(21,00).isTooLate()
+        new CheckIn(21,00).isEqualsOrAfter (CheckIn.COLD_MEALS_TIME)
     ).isEqualTo(
         true
     );
@@ -28,7 +27,7 @@ public class CheckInTest {
   @Test
   public void after9PMIsTooLate() {
     assertThat(
-        new CheckIn(23,30).isTooLate()
+        new CheckIn(23,30).isEqualsOrAfter (CheckIn.COLD_MEALS_TIME)
     ).isEqualTo(
         true
     );
