@@ -11,27 +11,16 @@ import java.util.List;
 public class CountColdMealsTest {
 
   @Test
-  public void noParticipant() {
+  public void returns_0_if_checkins_are_empty() {
     List<CheckIn> checkIns = new ArrayList<>();
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
+        ColdMealsCounter.countColdMeals(checkIns)
     ).isEqualTo(0);
   }
 
   @Test
-  public void oneLateParticipant() {
-    List<CheckIn> checkIns = Collections.singletonList(
-        new CheckIn(22, 30)
-    );
-
-    Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
-    ).isEqualTo(1);
-  }
-
-  @Test
-  public void allParticipantsAreLate() {
+  public void returns_collection_size_if_all_checkins_are_after_cold_meal_time() {
     List<CheckIn> checkIns = Arrays.asList (
         new CheckIn(22,30),
         new CheckIn(23,30),
@@ -39,12 +28,12 @@ public class CountColdMealsTest {
     );
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
-    ).isEqualTo(3);
+        ColdMealsCounter.countColdMeals(checkIns)
+    ).isEqualTo(checkIns.size());
   }
 
   @Test
-  public void noLateCheckIns() {
+  public void returns_0_if_checkins_has_no_item_after_cold_meal_time() {
     List<CheckIn> checkIns = Arrays.asList(
         new CheckIn(10, 30),
         new CheckIn(11, 45),
@@ -52,14 +41,14 @@ public class CountColdMealsTest {
     );
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
+        ColdMealsCounter.countColdMeals(checkIns)
     ).isEqualTo(
         0
     );
   }
 
   @Test
-  public void lateAndNonLateCheckIns() {
+  public void returns_1_if_checkins_has_one_item_after_cold_meal_time() {
     List<CheckIn> checkIns = Arrays.asList(
         new CheckIn(10, 30),
         new CheckIn(11, 45),
@@ -68,7 +57,7 @@ public class CountColdMealsTest {
     );
 
     Assertions.assertThat(
-        Planning.countColdMeals(checkIns)
+        ColdMealsCounter.countColdMeals(checkIns)
     ).isEqualTo(
         1
     );
