@@ -1,52 +1,71 @@
 package fr.lcdlv.promo05.socratesfr.coldmeal;
-
 import org.assertj.core.api.Assertions;
+import org.assertj.core.util.Lists;
 import org.junit.Test;
-import java.util.ArrayList;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ColdMealsCounterTest {
 
+    private final ColdMealsCounter coldMealsCounter = new ColdMealsCounter();
+    private final CheckIn checkInTimeBeforeColdMealsLimit = new CheckIn(12);
+    private final CheckIn checkInAfterColdMealsLimit = new CheckIn(21);
+
     @Test
-    public void should_return_no_cold_meals_if_no_participants() throws Exception {
-        ArrayList<CheckIn> checkIns = new ArrayList<CheckIn>();
-        Assertions.assertThat(ColdMealsCounter.countColdMeals(checkIns)).isEqualTo(0);
+    public void should_return_0_if_no_checkIn_after_cold_meal_time_limit() {
+
+        Assertions.assertThat(coldMealsCounter.countColdMeals(new CheckIns(Arrays.asList())))
+            .isEqualTo(0);
     }
 
     @Test
-    public void should_return_0_if_1_check_in_before_21() throws Exception {
-        ArrayList<CheckIn> checkIns = new ArrayList<CheckIn>();
-        checkIns.add(CheckIn.CheckInFactory.createFor(20));
-        Assertions.assertThat(ColdMealsCounter.countColdMeals(checkIns)).isEqualTo(0);
+    public void should_return_0_if_a_checkIn_before_cold_meal_time_limit() {
+
+        Assertions.assertThat(
+            coldMealsCounter
+                .countColdMeals(new CheckIns(Arrays.asList(checkInTimeBeforeColdMealsLimit))))
+            .isEqualTo(0);
     }
 
     @Test
-    public void should_return_1_if_1_check_in_after_21() throws Exception {
-        ArrayList<CheckIn> checkIns = new ArrayList<CheckIn>();
-        checkIns.add(CheckIn.CheckInFactory.createFor(22));
-        Assertions.assertThat(ColdMealsCounter.countColdMeals(checkIns)).isEqualTo(1);
+    public void should_return_1_if_the_checkIn_is_after_cold_meal_time_limit() {
+        Assertions.assertThat(
+            coldMealsCounter
+                .countColdMeals(new CheckIns(Arrays.asList(checkInAfterColdMealsLimit))))
+            .isEqualTo(1);
     }
 
     @Test
-    public void should_return_0_if_2_check_in_before_21() throws Exception {
-        ArrayList<CheckIn> checkIns = new ArrayList<CheckIn>();
-        checkIns.add(CheckIn.CheckInFactory.createFor(20));
-        checkIns.add(CheckIn.CheckInFactory.createFor(20));
-        Assertions.assertThat(ColdMealsCounter.countColdMeals(checkIns)).isEqualTo(0);
+    public void should_return_1_if_one_before_and_one_after_cold_meal_time_limit() {
+        List<CheckIn> checkIns = Lists.newArrayList(
+            checkInTimeBeforeColdMealsLimit,
+            checkInAfterColdMealsLimit
+        );
+        Assertions.assertThat(
+            coldMealsCounter.countColdMeals(new CheckIns(checkIns)))
+            .isEqualTo(1);
     }
 
     @Test
-    public void should_return_2_if_2_check_in_after_21() throws Exception {
-        ArrayList<CheckIn> checkIns = new ArrayList<CheckIn>();
-        checkIns.add(CheckIn.CheckInFactory.createFor(22));
-        checkIns.add(CheckIn.CheckInFactory.createFor(22));
-        Assertions.assertThat(ColdMealsCounter.countColdMeals(checkIns)).isEqualTo(2);
+    public void should_return_2_if_two_checkIns_after_cold_meal_time_limit() {
+        List<CheckIn> checkIns = Lists.newArrayList(
+            checkInAfterColdMealsLimit,
+            checkInAfterColdMealsLimit
+        );
+        Assertions.assertThat(
+            coldMealsCounter.countColdMeals(new CheckIns(checkIns)))
+            .isEqualTo(2);
     }
 
     @Test
-    public void should_return_1_if_1_check_in_before_21_and_1_check_in_after_21() throws Exception {
-        ArrayList<CheckIn> checkIns = new ArrayList<CheckIn>();
-        checkIns.add(CheckIn.CheckInFactory.createFor(22));
-        checkIns.add(CheckIn.CheckInFactory.createFor(20));
-        Assertions.assertThat(ColdMealsCounter.countColdMeals(checkIns)).isEqualTo(1);
+    public void should_return_0_if_two_checkIns_before_cold_meal_time_limit() {
+        List<CheckIn> checkIns = Lists.newArrayList(
+            checkInTimeBeforeColdMealsLimit,
+            checkInTimeBeforeColdMealsLimit
+        );
+        Assertions.assertThat(
+            coldMealsCounter.countColdMeals(new CheckIns(checkIns)))
+            .isEqualTo(0);
     }
 }

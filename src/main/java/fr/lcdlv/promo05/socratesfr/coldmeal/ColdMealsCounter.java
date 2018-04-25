@@ -4,12 +4,11 @@ import java.util.List;
 
 public class ColdMealsCounter {
 
-    public static final int COLD_MEAL_TIME = 21;
+    private static final int COLD_MEALS_TIME_LIMIT = 21;
 
-    public static int countColdMeals(List<CheckIn> checkIns) {
-        return Math.toIntExact(checkIns
-            .stream()
-            .filter(checkIn -> checkIn.isAfter(COLD_MEAL_TIME))
-            .count());
+    int countColdMeals(CheckIns checkIns) {
+        return checkIns.getCheckIns().stream()
+            .filter((checkIn) -> checkIn.isAfter(COLD_MEALS_TIME_LIMIT))
+            .collect(Collectors.toList()).size();
     }
 }
