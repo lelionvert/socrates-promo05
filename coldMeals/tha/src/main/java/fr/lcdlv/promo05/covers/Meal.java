@@ -2,7 +2,17 @@ package fr.lcdlv.promo05.covers;
 
 public class Meal {
 
-  public int getCovers() {
-    return 0;
+  private int coversNumber;
+
+  public Meal(int coversNumber) {
+    this.coversNumber = coversNumber;
+  }
+
+  public Meal() {
+
+  }
+
+  public int getCoversNumber() {
+    return coversNumber;
   }
 }
