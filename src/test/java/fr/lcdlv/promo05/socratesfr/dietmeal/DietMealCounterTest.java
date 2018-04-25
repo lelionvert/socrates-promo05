@@ -28,7 +28,18 @@ public class DietMealCounterTest {
         Assertions.assertThat(dietMealcounter.count("VEGAN", choices)).isEqualTo(1);
     }
 
-    
+    @Test
+    public void return_2_if_2_of_choice() throws Exception {
+        DietMealCounter dietMealcounter = new DietMealCounter();
+        List<String> choices = Arrays.asList("VEGAN","VEGAN");
+        Assertions.assertThat(dietMealcounter.count("VEGAN", choices)).isEqualTo(2);
+    }
 
+    @Test
+    public void return_0_if_choice_not_present() throws Exception {
+        DietMealCounter dietMealcounter = new DietMealCounter();
+        List<String> choices = Arrays.asList("VEGAN","VEGAN");
+        Assertions.assertThat(dietMealcounter.count("VEGETARIAN", choices)).isEqualTo(0);
+    }
 
 }
