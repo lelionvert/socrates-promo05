@@ -1,15 +1,18 @@
 package fr.lcdlv.promo05.socratesfr.coldmeal;
 
+import java.time.LocalTime;
 import java.util.List;
 
 public class ColdMealsCounter {
 
-    public static final int COLD_MEAL_TIME = 21;
+    private static final LocalTime COLD_MEALS_TIME = LocalTime.of(21, 00);
 
-    public static int countColdMeals(List<CheckIn> checkIns) {
-        return Math.toIntExact(checkIns
-            .stream()
-            .filter(checkIn -> checkIn.isAfter(COLD_MEAL_TIME))
-            .count());
+    static int countColdMeals(final List<CheckIn> checkIns) {
+        return Math.toIntExact(
+            checkIns
+                .stream()
+                .filter(checkIn -> checkIn.isEqualsOrAfter (COLD_MEALS_TIME))
+                .count()
+        );
     }
 }
