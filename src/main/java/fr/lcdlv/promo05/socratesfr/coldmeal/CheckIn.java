@@ -1,3 +1,5 @@
+package fr.lcdlv.promo05.socratesfr.coldmeal;
+
 public class CheckIn {
 
     private final Integer checkInTime;

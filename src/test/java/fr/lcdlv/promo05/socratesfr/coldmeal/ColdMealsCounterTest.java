@@ -1,3 +1,5 @@
+package fr.lcdlv.promo05.socratesfr.coldmeal;
+
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import java.util.ArrayList;
