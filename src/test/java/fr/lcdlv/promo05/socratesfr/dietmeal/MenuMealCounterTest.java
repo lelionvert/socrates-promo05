@@ -8,41 +8,41 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class DietMealCounterTest {
+public class MenuMealCounterTest {
 
     @Test
-    public void return_0_if_no_choices() {
-         List<Diet> choices = new ArrayList<>();
+    public void counting_vegan_covers_should_return_0_if_no_choices() {
+        List<Menu> choices = new ArrayList<>();
         DietMealCounter dietMealCounter = new DietMealCounter();
-        Assertions.assertThat(dietMealCounter.count(Diet.VEGAN, choices)).isEqualTo(0);
+        Assertions.assertThat(dietMealCounter.of(Menu.VEGAN, choices)).isEqualTo(0);
     }
 
     @Test
-    public void return_1_if_1_vegan_choice() {
-         List<Diet> choices = Collections.singletonList(Diet.VEGAN);
+    public void counting_vegan_covers_should_return_1_if_vegan_is_the_only_choice() {
+        List<Menu> choices = Collections.singletonList(Menu.VEGAN);
         DietMealCounter dietMealCounter = new DietMealCounter();
-        Assertions.assertThat(dietMealCounter.count(Diet.VEGAN, choices)).isEqualTo(1);
+        Assertions.assertThat(dietMealCounter.of(Menu.VEGAN, choices)).isEqualTo(1);
     }
 
     @Test
-    public void return_1_if_1_vegan_and_1_vegetarian_choices() {
+    public void counting_vegan_covers_should_return_1_if_vegan_is_one_of_the_choices() {
         DietMealCounter dietMealcounter = new DietMealCounter();
-         List<Diet> choices = Arrays.asList(Diet.VEGETARIAN, Diet.VEGAN);
-        Assertions.assertThat(dietMealcounter.count(Diet.VEGAN, choices)).isEqualTo(1);
+        List<Menu> choices = Arrays.asList(Menu.VEGETARIAN, Menu.VEGAN);
+        Assertions.assertThat(dietMealcounter.of(Menu.VEGAN, choices)).isEqualTo(1);
     }
 
     @Test
-    public void return_2_if_2_of_choice() throws Exception {
+    public void counting_vegan_covers_should_return_choices_size_if_vegan_is_all_the_choices() throws Exception {
         DietMealCounter dietMealcounter = new DietMealCounter();
-         List<Diet> choices = Arrays.asList(Diet.VEGAN, Diet.VEGAN);
-        Assertions.assertThat(dietMealcounter.count(Diet.VEGAN, choices)).isEqualTo(2);
+        List<Menu> choices = Arrays.asList(Menu.VEGAN, Menu.VEGAN);
+        Assertions.assertThat(dietMealcounter.of(Menu.VEGAN, choices)).isEqualTo(choices.size());
     }
 
     @Test
-    public void return_0_if_choice_not_present() throws Exception {
+    public void counting_vegan_covers_should_return_0_if_vegan_is_not_present_in_choices() throws Exception {
         DietMealCounter dietMealcounter = new DietMealCounter();
-         List<Diet> choices = Arrays.asList(Diet.VEGAN, Diet.VEGAN);
-        Assertions.assertThat(dietMealcounter.count(Diet.VEGETARIAN, choices)).isEqualTo(0);
+        List<Menu> choices = Arrays.asList(Menu.VEGETARIAN, Menu.VEGETARIAN);
+        Assertions.assertThat(dietMealcounter.of(Menu.VEGAN, choices)).isEqualTo(0);
     }
 
 }
