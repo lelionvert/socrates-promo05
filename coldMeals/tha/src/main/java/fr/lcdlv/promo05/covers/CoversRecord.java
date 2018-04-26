@@ -13,6 +13,6 @@ public class CoversRecord {
   }
 
   public int getCoversNumber() {
-    return this.covers.isEmpty() ? 0 : covers.size();
+    return covers.size();
   }
 }
