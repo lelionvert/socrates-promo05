@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.entry;
 
 public class ServiceTest {
 
@@ -60,4 +61,22 @@ public class ServiceTest {
     );
     assertThat(service.getCoversNumber(DietType.VEGETARIAN)).isEqualTo(1);
   }
+
+  @Test
+  public void shouldReturns2VegetarianCoverIfg1VegetarianAndAnotherDiet() {
+    Service service = new Service(
+        Arrays.asList(
+            new Cover(DietType.VEGAN),
+            new Cover(DietType.VEGETARIAN)
+        )
+    );
+
+    assertThat(
+        service.getCovers())
+        .hasSize(2)
+        .contains(entry(DietType.VEGAN, 1L), entry(DietType.VEGETARIAN, 1L)
+        );
+  }
+
+
 }

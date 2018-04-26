@@ -1,6 +1,6 @@
 package fr.lcdlv.promo05.covers;
 
-public class Cover {
+class Cover {
 
   private final DietType dietType;
 

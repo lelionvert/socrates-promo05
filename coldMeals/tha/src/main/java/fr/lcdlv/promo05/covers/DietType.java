@@ -1,5 +1,5 @@
 package fr.lcdlv.promo05.covers;
 
-public enum DietType {
+enum DietType {
   VEGETARIAN, VEGAN
 }
