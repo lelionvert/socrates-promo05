@@ -11,13 +11,10 @@ public class CoversRecordTest {
 
   private CoversRecord coversRecord;
 
-  @Before
-  public void setUp() throws Exception {
-    coversRecord = new CoversRecord(null);
-  }
-
   @Test
   public void shouldReturns0IfNoCovers() {
+    coversRecord = new CoversRecord(null);
+
     assertThat(coversRecord.getCoversNumber()).isEqualTo(0);
   }
 
@@ -28,4 +25,8 @@ public class CoversRecordTest {
     assertThat(coversRecord.getCoversNumber()).isEqualTo(1);
   }
 
+  @Test
+  public void shouldReturns2If2Covers() {
+    assertThat(coversRecord.getCoversNumber()).isEqualTo(2);
+  }
 }
