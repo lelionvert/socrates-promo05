@@ -7,4 +7,8 @@ public class Cover {
   public Cover(DietType dietType) {
     this.dietType = dietType;
   }
+
+  public DietType getDietType() {
+    return this.dietType;
+  }
 }

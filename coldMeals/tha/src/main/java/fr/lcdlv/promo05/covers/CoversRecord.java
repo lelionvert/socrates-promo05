@@ -14,8 +14,12 @@ public class CoversRecord {
     return covers.size();
   }
 
-
   public int getCoversNumber(DietType dietType) {
-    return 1;
+    return Math.toIntExact(
+        covers
+            .stream()
+            .filter(cover -> cover.getDietType() == dietType)
+            .count()
+    );
   }
 }

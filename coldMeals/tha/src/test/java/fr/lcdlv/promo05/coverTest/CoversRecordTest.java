@@ -3,6 +3,7 @@ package fr.lcdlv.promo05.coverTest;
 import fr.lcdlv.promo05.covers.Cover;
 import fr.lcdlv.promo05.covers.CoversRecord;
 import fr.lcdlv.promo05.covers.DietType;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -11,7 +12,6 @@ import java.util.Collections;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CoversRecordTest {
-
 
   @Test
   public void shouldReturns0IfNoCovers() {
@@ -34,9 +34,25 @@ public class CoversRecordTest {
   }
 
     @Test
-    public void shouldReturns1VeganCoverif1SVeganDiet() {
+    public void shouldReturns1VeganCoverIf1SVeganDiet() {
         CoversRecord coversRecord = new CoversRecord(
             Collections.singletonList(new Cover(DietType.VEGAN))
+        );
+        assertThat(coversRecord.getCoversNumber(DietType.VEGAN)).isEqualTo(1);
+    }
+
+  @Test
+  public void shouldReturns2VeganCoverIf2VeganDiet() {
+    CoversRecord coversRecord = new CoversRecord(
+        Arrays.asList(new Cover(DietType.VEGAN), new Cover(DietType.VEGAN))
+    );
+    assertThat(coversRecord.getCoversNumber(DietType.VEGAN)).isEqualTo(2);
+  }
+
+    @Test
+    public void shouldReturns1VeganCoverIf1VeganDietAndAnotherDiet() {
+        CoversRecord coversRecord = new CoversRecord(
+                Arrays.asList(new Cover(DietType.VEGAN), new Cover(DietType.VEGETARIAN))
         );
         assertThat(coversRecord.getCoversNumber(DietType.VEGAN)).isEqualTo(1);
     }
