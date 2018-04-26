@@ -1,7 +1,5 @@
 package fr.lcdlv.promo05.covers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CoversRecord {
@@ -14,5 +12,10 @@ public class CoversRecord {
 
   public int getCoversNumber() {
     return covers.size();
+  }
+
+
+  public int getCoversNumber(DietType dietType) {
+    return 1;
   }
 }
