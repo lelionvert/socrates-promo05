@@ -5,16 +5,17 @@ import fr.lcdlv.promo05.covers.CoversRecord;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CoversRecordTest {
 
-  private CoversRecord coversRecord;
 
   @Test
   public void shouldReturns0IfNoCovers() {
-    coversRecord = new CoversRecord(null);
-
+    CoversRecord coversRecord = new CoversRecord((Cover) null);
     assertThat(coversRecord.getCoversNumber()).isEqualTo(0);
   }
 
@@ -27,6 +28,7 @@ public class CoversRecordTest {
 
   @Test
   public void shouldReturns2If2Covers() {
+    CoversRecord coversRecord = new CoversRecord(Arrays.asList(new Cover(),new Cover())) ;
     assertThat(coversRecord.getCoversNumber()).isEqualTo(2);
   }
 }
