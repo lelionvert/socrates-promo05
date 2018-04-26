@@ -1,6 +1,6 @@
 package fr.lcdlv.promo05.socratesfr.dietmeal;
 
-public class DietMealCounter {
+public class CoversCounter {
     public int count(Menu menu, Choices choices) {
 
         int count = 0;
