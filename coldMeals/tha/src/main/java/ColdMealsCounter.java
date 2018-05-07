@@ -1,9 +1,6 @@
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-public class ColdMealsCounter {
+class ColdMealsCounter {
 
     public static final int COLD_MEAL_TIME = 21;
 

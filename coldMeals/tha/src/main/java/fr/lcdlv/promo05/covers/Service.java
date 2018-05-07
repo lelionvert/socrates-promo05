@@ -1,25 +1,25 @@
 package fr.lcdlv.promo05.covers;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toMap;
 
 class Service {
 
   private final List<Cover> covers;
 
-  public Service(List<Cover> covers) {
+  Service(List<Cover> covers) {
     this.covers = covers;
   }
 
-  public int getCoversNumber() {
+  int getCoversNumber() {
     return covers.size();
   }
 
-  public int getCoversNumber(DietType dietType) {
+  int getCoversNumber(DietType dietType) {
     return Math.toIntExact(
         covers
             .stream()
@@ -28,11 +28,14 @@ class Service {
     );
   }
 
-    public Map<DietType, Long> getCovers() {
-      return covers
-          .stream()
+    Map<DietType, Integer> getCovers() {
+      return Arrays
+          .stream(DietType.values())
           .collect(
-              groupingBy(Cover::getDietType,  counting())
+              toMap(
+                  Function.identity(),
+                  this::getCoversNumber
+              )
           );
     }
 }

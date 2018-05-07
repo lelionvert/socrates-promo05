@@ -11,8 +11,8 @@ public class CheckIn {
     }
 
     static class CheckInFactory {
-        public static final String CHECKIN_DATE_EMPTY_ERROR_MESSAGE = "Checkin time is empty !";
-        public static final String CHECKIN_DATE_INVALID_ERROR_MESSAGE = "Checkin time is invalid !";
+        static final String CHECKIN_DATE_EMPTY_ERROR_MESSAGE = "Checkin time is empty !";
+        static final String CHECKIN_DATE_INVALID_ERROR_MESSAGE = "Checkin time is invalid !";
 
         public static CheckIn createFor(Integer time) {
             if (time == null) {
