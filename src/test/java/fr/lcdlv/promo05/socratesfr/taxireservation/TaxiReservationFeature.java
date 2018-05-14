@@ -18,7 +18,8 @@ public class TaxiReservationFeature {
 
     @Before
     public void setUp(){
-        taxiBooker = new TaxiBooker(trainArrivalsRepository);
+        trainArrivalsRepository = new InMemoryTrainArrivalsRepository();
+        taxiBooker = new TaxiBooker(trainArrivalsRepository, emailSender);
     }
 
     @Test

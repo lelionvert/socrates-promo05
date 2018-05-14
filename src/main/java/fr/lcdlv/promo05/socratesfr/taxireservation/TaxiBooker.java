@@ -5,9 +5,11 @@ import java.time.DayOfWeek;
 public class TaxiBooker {
 
     final TrainArrivalsRepository trainArrivalsRepository;
+    private final EmailSender emailSender;
 
-    public TaxiBooker(TrainArrivalsRepository trainArrivalsRepository) {
+    public TaxiBooker(TrainArrivalsRepository trainArrivalsRepository, EmailSender emailSender) {
         this.trainArrivalsRepository = trainArrivalsRepository;
+        this.emailSender = emailSender;
     }
 
     public void informTrainArrival(String participantName, String trainNumber, DayOfWeek day) {
@@ -15,6 +17,6 @@ public class TaxiBooker {
     }
 
     public void book() {
-        throw new UnsupportedOperationException();
+        emailSender.send(new Email("", "", ""));
     }
 }
