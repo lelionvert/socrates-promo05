@@ -36,6 +36,6 @@ public class TaxiBookerTest {
     @Test
     public void sendEmail() {
         taxiBooker.book();
-        verify(emailSender).send(any(Email.class));
+        verify(emailSender).send(new Email("taxi@gmail.com", "", ""));
     }
 }

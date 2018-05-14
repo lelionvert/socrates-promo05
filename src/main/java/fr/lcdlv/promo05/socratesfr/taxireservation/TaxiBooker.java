@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 
 public class TaxiBooker {
 
-    final TrainArrivalsRepository trainArrivalsRepository;
+    private final TrainArrivalsRepository trainArrivalsRepository;
     private final EmailSender emailSender;
 
     public TaxiBooker(TrainArrivalsRepository trainArrivalsRepository, EmailSender emailSender) {
@@ -17,6 +17,6 @@ public class TaxiBooker {
     }
 
     public void book() {
-        emailSender.send(new Email("", "", ""));
+        emailSender.send(new Email("taxi@gmail.com", "", ""));
     }
 }

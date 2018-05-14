@@ -2,12 +2,15 @@ package fr.lcdlv.promo05.socratesfr.taxireservation;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.DayOfWeek;
 
 import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TaxiReservationFeature {
 
     @Mock
@@ -17,7 +20,7 @@ public class TaxiReservationFeature {
     private TrainArrivalsRepository trainArrivalsRepository;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         trainArrivalsRepository = new InMemoryTrainArrivalsRepository();
         taxiBooker = new TaxiBooker(trainArrivalsRepository, emailSender);
     }
