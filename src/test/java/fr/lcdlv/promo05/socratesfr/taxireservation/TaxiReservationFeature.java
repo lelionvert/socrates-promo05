@@ -22,7 +22,8 @@ public class TaxiReservationFeature {
     @Before
     public void setUp() {
         trainArrivalsRepository = new InMemoryTrainArrivalsRepository();
-        taxiBooker = new TaxiBooker(trainArrivalsRepository, emailSender);
+        TaxiBookingDispatcher taxiBookingDispatcher = new TaxiBookingDispatcher();
+        taxiBooker = new TaxiBooker(trainArrivalsRepository, emailSender, taxiBookingDispatcher);
     }
 
     @Test
@@ -56,11 +57,11 @@ public class TaxiReservationFeature {
         taxiBooker.book();
 
         String content = "Jour;Heure;Nombre participants\n" +
-                "Jeudi;17:30;4\n" +
-                "Jeudi;18:00;4\n" +
-                "Jeudi;19:30;4\n" +
-                "Jeudi;19:30;3\n" +
-                "Vendredi;10:20;3";
+                "jeudi;17:30;4\n" +
+                "jeudi;18:00;4\n" +
+                "jeudi;19:30;4\n" +
+                "jeudi;19:30;3\n" +
+                "vendredi;10:20;3";
         String to = "taxi@gmail.com";
         String subject = "Reservation 5 taxis";
 

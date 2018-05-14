@@ -1,5 +1,6 @@
 package fr.lcdlv.promo05.socratesfr.taxireservation;
 
+import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,8 +8,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -21,9 +23,12 @@ public class TaxiBookerTest {
     @Mock
     private TrainArrivalsRepository trainArrivalsRepository;
 
+    @Mock
+    private TaxiBookingDispatcher taxiBookingDispatcher;
+
     @Before
     public void setUp() {
-        taxiBooker = new TaxiBooker(trainArrivalsRepository, emailSender);
+        taxiBooker = new TaxiBooker(trainArrivalsRepository, emailSender, taxiBookingDispatcher);
     }
 
     @Test
@@ -35,7 +40,14 @@ public class TaxiBookerTest {
 
     @Test
     public void sendEmail() {
+        TaxiBooking taxiBooking = new TaxiBooking(LocalDateTime.of(2018, 10, 25, 17, 30), 4);
+
+        given(taxiBookingDispatcher.generate())
+                .willReturn(Lists.newArrayList(taxiBooking));
+
         taxiBooker.book();
-        verify(emailSender).send(new Email("taxi@gmail.com", "", ""));
+
+
+        verify(emailSender).send(new Email("taxi@gmail.com", "", "Jour;Heure;Nombre participants\njeudi;17:30;4\n"));
     }
 }
