@@ -22,7 +22,7 @@ public class TaxiBookingDispatcherTest {
     Trains trains;
 
     @Test
-    public void generate() {
+    public void should_book_1_taxi_with_2_seats_when_2_participants_arrive_in_same_train() {
         given(trainArrivalsRepository.getTrainArrivals()).willReturn(Arrays.asList(
                 new TrainArrival("ParticipantName1", "8810", DayOfWeek.THURSDAY),
                 new TrainArrival("ParticipantName2", "8810", DayOfWeek.THURSDAY)
@@ -37,7 +37,7 @@ public class TaxiBookingDispatcherTest {
     }
 
     @Test
-    public void more_than_4_arrivals_should_return_more_than_1_taxi_booking() {
+    public void should_book_2_taxis_with_respectably_4_and_1_seat_when_5_participants_arrive_in_same_train() {
         {
             given(trainArrivalsRepository.getTrainArrivals()).willReturn(Arrays.asList(
                     new TrainArrival("ParticipantName1", "8810", DayOfWeek.THURSDAY),
@@ -52,9 +52,41 @@ public class TaxiBookingDispatcherTest {
             TaxiBookingDispatcher taxiBookingDispatcher = new TaxiBookingDispatcher(trainArrivalsRepository, trains);
 
             assertThat(taxiBookingDispatcher.generate()).containsExactly(
-                            new TaxiBooking(DayOfWeek.THURSDAY, LocalTime.of(17, 30), 4),
-                            new TaxiBooking(DayOfWeek.THURSDAY, LocalTime.of(17, 30), 1)
-                    );
+                    new TaxiBooking(DayOfWeek.THURSDAY, LocalTime.of(17, 30), 4),
+                    new TaxiBooking(DayOfWeek.THURSDAY, LocalTime.of(17, 30), 1)
+            );
         }
     }
+
+    @Test
+    public void should_book_3_taxis_with_4_seats_when_12_participants_arrive_in_same_train() {
+        {
+            given(trainArrivalsRepository.getTrainArrivals()).willReturn(Arrays.asList(
+                    new TrainArrival("ParticipantName1", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName2", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName3", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName4", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName5", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName6", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName7", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName8", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName9", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName10", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName11", "8810", DayOfWeek.THURSDAY),
+                    new TrainArrival("ParticipantName12", "8810", DayOfWeek.THURSDAY)
+            ));
+
+            given(trains.getArrivalTimeOf("8810")).willReturn(LocalTime.of(17, 30));
+
+            TaxiBookingDispatcher taxiBookingDispatcher = new TaxiBookingDispatcher(trainArrivalsRepository, trains);
+
+            assertThat(taxiBookingDispatcher.generate()).containsExactly(
+                    new TaxiBooking(DayOfWeek.THURSDAY, LocalTime.of(17, 30), 4),
+                    new TaxiBooking(DayOfWeek.THURSDAY, LocalTime.of(17, 30), 4),
+                    new TaxiBooking(DayOfWeek.THURSDAY, LocalTime.of(17, 30), 4)
+            );
+        }
+    }
+
+
 }
