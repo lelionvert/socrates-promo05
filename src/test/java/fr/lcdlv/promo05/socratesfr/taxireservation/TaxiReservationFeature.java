@@ -23,8 +23,7 @@ public class TaxiReservationFeature {
     @Before
     public void setUp() {
         trainArrivalsRepository = new InMemoryTrainArrivalsRepository();
-        TaxiBookingDispatcher taxiBookingDispatcher = new TaxiBookingDispatcher(new InMemoryTrainArrivalsRepository(),
-                trains);
+        TaxiBookingDispatcher taxiBookingDispatcher = new TaxiBookingDispatcher(trainArrivalsRepository, trains);
         taxiBooker = new TaxiBooker(trainArrivalsRepository, emailSender, taxiBookingDispatcher);
     }
 
