@@ -18,11 +18,13 @@ public class TaxiReservationFeature {
 
     private TaxiBooker taxiBooker;
     private TrainArrivalsRepository trainArrivalsRepository;
+    private Trains trains;
 
     @Before
     public void setUp() {
         trainArrivalsRepository = new InMemoryTrainArrivalsRepository();
-        TaxiBookingDispatcher taxiBookingDispatcher = new TaxiBookingDispatcher();
+        TaxiBookingDispatcher taxiBookingDispatcher = new TaxiBookingDispatcher(new InMemoryTrainArrivalsRepository(),
+                trains);
         taxiBooker = new TaxiBooker(trainArrivalsRepository, emailSender, taxiBookingDispatcher);
     }
 

@@ -1,6 +1,10 @@
 package fr.lcdlv.promo05.socratesfr.taxireservation;
 
+import java.util.Collection;
+
 interface TrainArrivalsRepository {
 
-    void add(TrainArrival arrival);
+    Collection<TrainArrival> getTrainArrivals();
+
+    void add(TrainArrival trainArrival);
 }

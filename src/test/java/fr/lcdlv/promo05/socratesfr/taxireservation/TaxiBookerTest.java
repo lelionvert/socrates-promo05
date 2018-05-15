@@ -9,6 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
@@ -40,7 +41,7 @@ public class TaxiBookerTest {
 
     @Test
     public void sendEmail() {
-        TaxiBooking taxiBooking = new TaxiBooking(LocalDateTime.of(2018, 10, 25, 17, 30), 4);
+        TaxiBooking taxiBooking = new TaxiBooking(DayOfWeek.THURSDAY, LocalTime.of(17, 30), 4);
 
         given(taxiBookingDispatcher.generate())
                 .willReturn(Lists.newArrayList(taxiBooking));

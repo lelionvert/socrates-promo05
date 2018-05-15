@@ -17,7 +17,7 @@ public class TaxiBooker {
     }
 
     public void informTrainArrival(String participantName, String trainNumber, DayOfWeek day) {
-        trainArrivalsRepository.add(new TrainArrival());
+        trainArrivalsRepository.add(new TrainArrival(participantName, trainNumber, day));
     }
 
     public void book() {
@@ -30,7 +30,7 @@ public class TaxiBooker {
 
         for (TaxiBooking taxiBooking :
                 taxiBookingDispatcher.generate()) {
-            contentBuilder.append(String.format("%s;%d:%d;%d\n",taxiBooking.getDay(),taxiBooking.getHour(),taxiBooking.getMinute(),taxiBooking.getSeats()));
+            contentBuilder.append(String.format("%s;%d:%d;%d\n", taxiBooking.getDay(), taxiBooking.getHour(), taxiBooking.getMinute(), taxiBooking.getSeats()));
         }
 
         return contentBuilder.toString();
